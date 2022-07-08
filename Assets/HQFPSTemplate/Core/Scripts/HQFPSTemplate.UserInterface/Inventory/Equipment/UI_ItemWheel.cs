@@ -217,7 +217,8 @@ namespace HQFPSTemplate.UserInterface
 
         private int GetHighlightedSlot()
         {
-            Vector2 directionOfSelection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")).normalized * m_Range;
+            //Vector2 directionOfSelection = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")).normalized * m_Range;
+            Vector2 directionOfSelection = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.delta.y.ReadValue()).normalized * m_Range;
 
             if(directionOfSelection != Vector2.zero) 
                 m_DirectionOfSelection = Vector2.Lerp(m_DirectionOfSelection, directionOfSelection, Time.deltaTime * m_Sensitivity);
