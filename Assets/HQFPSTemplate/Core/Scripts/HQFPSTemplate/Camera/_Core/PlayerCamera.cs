@@ -49,7 +49,7 @@ namespace HQFPSTemplate
 
 		[SerializeField]
 		[Tooltip("The higher it is, the faster the camera will rotate.")]
-		private float m_Sensitivity = 5f;
+		private float m_Sensitivity = .005f;
 
 		[SerializeField]
 		private float m_AirborneSensitivity = 1.5f;

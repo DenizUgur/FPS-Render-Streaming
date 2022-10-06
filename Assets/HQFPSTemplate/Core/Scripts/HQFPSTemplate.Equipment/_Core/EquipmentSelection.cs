@@ -108,9 +108,18 @@ namespace HQFPSTemplate.Equipment
             //if(m_SelectByDigits && Input.anyKeyDown && m_NextTimeCanSelect < Time.time)
             if(m_SelectByDigits && Keyboard.current.anyKey.isPressed && m_NextTimeCanSelect < Time.time)
             {
-                //if(int.TryParse(Input.inputString, out int keyNumber))
+                //if(int.TryParse(Keyboard.current, out int keyNumber))
                 //    m_HolsterContainer.SelectedSlot.Set(keyNumber - 1);
-                m_HolsterContainer.SelectedSlot.Set(1 - 1);
+
+                foreach (var k in Keyboard.current.allKeys)
+                {
+                    var code = (int) k.keyCode;
+                    if (k.wasPressedThisFrame && 41 <= code && code <= 48)
+                    {
+                        m_HolsterContainer.SelectedSlot.Set(code - 41);
+                        break;
+                    }
+                }
 
                 m_NextTimeCanSelect = Time.time + m_SelectThreshold;
             }
